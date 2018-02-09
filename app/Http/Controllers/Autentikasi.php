@@ -18,7 +18,6 @@ class Autentikasi extends Controller
     {
         if(Auth::attempt(['username'=> $req->username, 'password'=>$req->password]))
         {
-            Session::put('dd', 'ada');
             Auth::user();
             return redirect()->intended('/');
         }

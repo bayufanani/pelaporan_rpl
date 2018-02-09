@@ -19,8 +19,21 @@
 	.fade-scale.in {
 		opacity: 1;
 		transform: scale(1);
-	}
-	</style>
+  }
+    .modal{
+        display: block !important; /* I added this to see the modal, you don't need this */
+    }
+
+    /* Important part */
+    .modal-dialog{
+        overflow-y: initial !important
+    }
+    .modal-body{
+        height: 500px;
+        overflow-y: auto;
+        margin: 5px;
+    }
+</style>
 </head>
 <body>
 	<div class="container-fluid">
