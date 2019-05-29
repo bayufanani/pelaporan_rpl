@@ -9,7 +9,7 @@ class Api extends Controller
 {
     function DataPelaporan()
     {
-        $laporan = App\Laporan::all();
+        $laporan = App\Laporan::orderBy("tgl_dikirim", "desc")->get();
         $data = [];
         $no = 1;
         foreach($laporan as $dt)
@@ -21,7 +21,7 @@ class Api extends Controller
                 'fasilitas'=>$dt->fasilitas->nama_fasilitas,
                 'lokasi'=>$dt->lokasi,
                 'foto'=>$dt->foto,
-                'tgl_dikirm'=>$dt->tgl_dikirim,
+                'tgl_dikirim'=>$dt->tgl_dikirim,
                 'pengirim'=>$dt->pengirim,
                 'tgl_diverifikasi'=>$dt->tgl_diverifikasi,
                 'status'=>$dt->status,
@@ -40,7 +40,7 @@ class Api extends Controller
             'fasilitas'=>$laporan->fasilitas->nama_fasilitas,
              'lokasi'=>$laporan->lokasi,
               'foto'=>$laporan->foto,
-              'tgl_dikirm'=>$laporan->tgl_dikirim,
+              'tgl_dikirim'=>$laporan->tgl_dikirim,
               'pengirim'=>$laporan->pengirim,
               'tgl_diverifikasi'=>$laporan->tgl_diverifikasi,
               'status'=>$laporan->status,
@@ -90,5 +90,26 @@ class Api extends Controller
     function DataFasilitas()
     {
         return App\Fasilitas::all();
+    }
+
+    function SimpanLaporan(Request $req)
+    {
+        $laporan = new App\Laporan;
+        $laporan->id_kecamatan = $req->id_kecamatan;
+        $laporan->id_fasilitas = $req->id_fasilitas;
+        $laporan->lokasi = $req->lokasi;
+        $laporan->foto = $req->foto;
+        $laporan->tgl_dikirim = now();
+        $laporan->pengirim = $req->email;
+        $laporan->status = 0;
+        $laporan->keterangan = $req->keterangan;
+        if($laporan->save())
+        {
+            return "sukses";
+        } 
+        else
+        {
+            return "gagal";
+        }
     }
 }

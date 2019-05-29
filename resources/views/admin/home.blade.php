@@ -78,7 +78,7 @@
         "<td>"+x.pengirim+"</td>"+
         "<td>"+x.lokasi+"</td>"+
         "<td>"+x.keterangan+"</td>"+
-        "<td>"+moment(x.tgl).format('LLL')+"</td>"+
+        "<td>"+moment(x.tgl_dikirim.date).format('LLL')+"</td>"+
         "<td><span class='label "+labele+"'>"+teks+"</span></td>"+
         "<td>"+
         "<div class='btn-group'>"+

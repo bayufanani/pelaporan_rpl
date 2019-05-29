@@ -20,7 +20,7 @@ class CreateLaporansTable extends Migration
             $table->integer('id_kecamatan')->unsigned();
             $table->integer('id_fasilitas')->unsigned();
             $table->string('lokasi', 100);
-            $table->string('foto', 64);
+            $table->string('foto', 64)->nullable();
             $table->dateTime('tgl_dikirim');
             $table->dateTime('updated_at');
             $table->string('pengirim', 100);

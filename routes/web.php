@@ -28,5 +28,6 @@ Route::get('/api/data-pelaporan', 'Api@DataPelaporan');
 Route::get('/api/data-pelaporan/{id}', 'Api@DataPelaporanById');
 Route::get('/api/data-kecamatan', 'Api@DataKecamatan');
 Route::get('/api/data-fasilitas', 'Api@DataFasilitas');
+Route::post('/api/simpan-laporan', 'Api@SimpanLaporan');
 
 Route::get('/api/DetailModal/{id}', 'Api@DetailModal');
